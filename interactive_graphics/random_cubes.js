@@ -17,9 +17,7 @@ function init()
   // CAMERA
   var aspectRatio= cWidth/cHeight;
   camera= new THREE.PerspectiveCamera(70,aspectRatio, 0.1, 1000);
-  //camera.position.set(-10, 20, 20);
-  camera.position.z=500;
-  //camera.position.y=0;
+  camera.position.set(-10, 0, 500);
 }
 
 
