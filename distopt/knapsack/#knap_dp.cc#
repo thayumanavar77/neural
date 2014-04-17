@@ -1,0 +1,111 @@
+// A Dynamic Programming based solution for 0-1 Knapsack problem
+#include<stdio.h>
+ 
+// A utility function that returns maximum of two integers
+int max(int a, int b) { return (a > b)? a : b; }
+ 
+// Returns the maximum value that can be put in a knapsack of capacity W
+int knapSack(int W, int wt[], int val[], int n)
+{
+  int i, w;
+  int K[n+1][W+1];
+ 
+  // Build table K[][] in bottom up manner
+  for (i = 0; i <= n; i++)
+    {
+      for (w = 0; w <= W; w++)
+	{
+	  if (i==0 || w==0)
+	    K[i][w] = 0;
+	  else if (wt[i-1] <= w)
+	    K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w]);
+	  else
+	    K[i][w] = K[i-1][w];
+	}
+    }
+ 
+  return K[n][W];
+}
+ 
+int main()
+{
+  int val[] = {60, 100, 120};
+  int wt[] = {10, 20, 30};
+  int  W = 50;
+  int n = sizeof(val)/sizeof(val[0]);
+  printf("%d", knapSack(W, wt, val, n));
+  return 0;
+}
+Time Complexity: O(nW) where n is the number of items and W is the capacity of knapsack.
+
+		 References:
+		 http://www.es.ele.tue.nl/education/5MC10/Solutions/knapsack.pdf
+		 http://www.cse.unl.edu/~goddard/Courses/CSCE310J/Lectures/Lecture8-DynamicProgramming.pdf
+
+		 Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above.
+
+     
+
+       
+  Related Tpoics:
+
+  Amazon Interview | Set 70 (On-Campus For Internship)
+Tail Recursion
+Find if two rectangles overlap
+  Analysis of Algorithm | Set 4 (Solving Recurrences)
+Print all possible paths from top left to bottom right of a mXn matrix
+Generate all unique partitions of an integer
+Russian Peasant Multiplication
+  Closest Pair of Points | O(nlogn) Implementation
+  
+Writing code in comment? Please use ideone.com and share the link here.
+
+
+  
+search
+
+Interview Experiences
+Advanced Data Structures
+Dynamic Programming
+Greedy Algorithms
+Backtracking
+Pattern Searching
+Divide & Conquer
+Mathematical Algorithms
+Recursion
+Geometric Algorithms
+
+ 
+Popular Posts
+All permutations of a given string
+Memory Layout of C Programs
+Understanding .extern. keyword in C
+Median of two sorted arrays
+Tree traversal without recursion and without stack!
+  Structure Member Alignment, Padding and Data Packing
+Intersection point of two Linked Lists
+Lowest Common Ancestor in a BST.
+Check if a binary tree is BST or not
+Sorted Linked List to Balanced BST
+
+ 
+   Subscribe
+Recent Comments
+  fuk u head first java is good book. but it too slow.
+Books        9 hours ago
+  Ratul Jain Do I have to use multi map in java to implement...
+Belzabar Interview Computer Scientist Internship        9 hours ago
+  anurag baidyanath for the code below: #include<stdio.h> int...</stdio.h>
+Output of C Program | Set 28        10 hours ago
+			      Samar Method 2 is correct & there is no bug in this...
+Delete nodes which have a greater value on right side        10 hours ago
+			      mm, jk
+C Language | Set 9        10 hours ago
+			      G4GFan i guess in that case it should return -1...
+			      Amazon Interview | Set 77 (Off-Campus For SDE-1)        11 hours ago
+
+  
+
+  
+
+ 
